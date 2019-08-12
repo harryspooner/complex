@@ -9,10 +9,10 @@ script:
   - docker run harishnarayanan/complex npm test -- --coverage
 
 after_success:
-  - docker build -t harishnarayanan/multi-client -f ./client
-  - docker build -t harishnarayanan/multi-nginx -f ./nginx
-  - docker build -t harishnarayanan/multi-server -f ./server
-  - docker build -t harishnarayanan/multi-worker -f ./worker
+  - docker build -t harishnarayanan/multi-client  ./client
+  - docker build -t harishnarayanan/multi-nginx  ./nginx
+  - docker build -t harishnarayanan/multi-server  ./server
+  - docker build -t harishnarayanan/multi-worker  ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push harishnarayanan/multi-client
   - docker push harishnarayanan/multi-nginx
